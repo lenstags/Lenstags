@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../components/Nav/Nav'
 import Card from '../components/Profile/Card'
-import PostView from '../components/Profile/PostView'
+import PostView from '../components/ViewPosts/PostView'
 
 const Profiles = () => {
     
