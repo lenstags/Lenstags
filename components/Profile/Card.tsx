@@ -60,7 +60,6 @@ const Card: React.FC <Props> = ({img}): JSX.Element => {
                   
                     <div className='card-Name w-auto mx-auto flex'>
                         {datosUser.user_Name}
-                        <img src={vector.src} alt="" className='absolute vector' />
                     </div>
                     
                 </div>

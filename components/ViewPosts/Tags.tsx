@@ -1,8 +1,10 @@
 import React from 'react'
+import { AiOutlineMore } from 'react-icons/ai';
+
+
 
 const Tags = ({tags}:any) => {
 
-    console.log(tags, 'goole')
 
     return (
     <>
@@ -12,13 +14,11 @@ const Tags = ({tags}:any) => {
                 <div className='w-1/2 flex items-end pb-5'>
                     <p>Tags</p>
                 </div>
-                <div className='w-1/2 flex pb-5'>
-                    <div className='flex w-full'>
-                        <div className='flex'>
-                            <button className='border-black border w-auto'>+ tag</button>
+                <div className='w-1/2 flex pb-5 items-end'>
+                    <div className='flex w-auto'>
+                            <button className='border-black border w-auto h-6 text-xs hover:bg-greenLengs'>+ add tag</button>
                             <img src="" alt="" />
                             <div>3</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ const Tags = ({tags}:any) => {
                     console.log(t, 'TAGS')
                     return(
                     <>
-                        <div className='border-black border pr-2 pl-2' key={index}>
+                        <div className='border-black border pr-2 pl-2 hover:bg-greenLengs' key={index}>
                             {t}
                         </div>
                     </>

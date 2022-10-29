@@ -8,7 +8,7 @@ const Profiles = () => {
     return (
         <div className='bg-white w-full h-auto'>
             <Nav/>
-            <div className='flex w-full pr-20'>
+            <div className='flex w-full pr-40'>
     
                     <Card img=""/>
                     <PostView/>

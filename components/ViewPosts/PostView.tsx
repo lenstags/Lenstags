@@ -15,7 +15,7 @@ const PostView = () => {
       <div>
         <Options/>
         <div className='w-auto'>
-          <div>
+          <div className='w-full'>
             <Tags 
               tags ={tags}
             />
