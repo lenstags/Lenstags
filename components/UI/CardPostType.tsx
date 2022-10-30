@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function CardPostType({}:any) {
+function CardPostType({prop}:any) {
   const [editable, setEditable] = useState(false);
   const handleClick = () => {
     setEditable(!editable);
