@@ -47,7 +47,7 @@ const Card: React.FC <Props> = ({img}): JSX.Element => {
           
           <div className='flex flex-col'>
                 
-            <div className='mx-auto pb-20 '>
+            <div className='pb-20'>
                 <div className='z-10 absolute cover'>
                   <Cover/>
                 </div>
