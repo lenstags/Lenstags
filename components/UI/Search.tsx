@@ -1,16 +1,11 @@
 import React from 'react'
 import type {ReactNode} from 'react'
 
-interface attrInput {
-    placeholder:string,
-    type:String,
-    iconLeft: ReactNode
-}
 
-export const Input= ({placeholder, type, iconLeft}:attrInput) => {
+export const Input= ({} ) => {
   return (
-    <div className='w-full'>
-          <input type="" />
+    <div className='w-full  '>
+          <input type="" className=" w-full bg-white border-black border"/>
     </div>
   )
 }
