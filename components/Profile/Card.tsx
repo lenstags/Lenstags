@@ -64,6 +64,8 @@ const Card: React.FC <Props> = ({img}): JSX.Element => {
                     
                 </div>
                 <div className='card-grayLetters'>{datosUser.lens}</div>
+
+                <div className='bg-greenLengs h-8 border-black border-y pt-1 font-bold'>+FOLLOW</div>
               </div>
                   
               <div className='lg:flex w-auto mx-auto lg:gap-6 pt-5  '>
