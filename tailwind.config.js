@@ -9,7 +9,9 @@ module.exports = {
       colors:{
         greenLengs: "#dff602",
         rojoLengs: "#ff3233",
-        letrasGrises: "#a4a3a3"
+        letrasGrises: "#a4a3a3",
+        letterGray: "#AAAAAA",
+        letterGray2: "#666666"
 
       }
     },
