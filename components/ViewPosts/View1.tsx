@@ -9,7 +9,7 @@ const View1 = () => {
         <div className='w-full pt-10 pl-5'>
             <div className='w-full'>
                 <Input
-                    placeholder="Search..."
+                    PlaceHolder="Search..."
                     type="text"
                     iconLeft= ""
                 />

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Input} from '../UI/Search'
 import PostType from '../UI/PostTypes'
-import Links from '../UI/Link'
+import Links from '../UI/Links'
 
 const View2 = () => {
 
@@ -36,8 +36,8 @@ const View2 = () => {
           </div>
           <div className='w-1/2'>
             <Input
-                      placeholder="Search..."
-                      type="text"
+                      PlaceHolder= "Search..."
+                      Type="text"
                       iconLeft= ""
                   />
           </div>
