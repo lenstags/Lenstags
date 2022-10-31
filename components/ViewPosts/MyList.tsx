@@ -34,22 +34,10 @@ const MyList = () => {
 
         <div>
             
-            <div className='flex'>
-                {names.map((n:string, index:number)=>{
-                    return(
-                        <>
-                            <div className='index w-1/2 text-center'>
-                                {n=='name'? (<>
-                                    <p>{n}</p>
-                                </>) 
-                                :(<>
-                                    <div>{n}</div>
-                                    <div>{n}</div>
-                                </>)  }
-                            </div>
-                        </>
-                    )
-                })}
+            <div className='flex w-full pl-10'>
+                    <div className='w-1/2'>{names[0]}</div>
+                    <div className='w-1/2'>{names[1]}</div>
+                    <div className='w-1/2'>{names[2]}</div>
             </div>
                 
             <div>
@@ -57,7 +45,7 @@ const MyList = () => {
 
                     return(
                         <>
-                            <div key={index} className="flex w-full text-center">
+                            {/*<div key={index} className="flex w-full text-center">
                                 <div>
                                     <div className="w-1/2">{l.Name}</div>
                                 </div>
@@ -66,7 +54,7 @@ const MyList = () => {
                                     <div className="w-1/2">{l.Collect}</div>
                                 </div>
                                 <div className='flex'>Add<button>icon</button></div>
-                            </div>
+                                </div>*/}
                         </>
                     )
                 })}
