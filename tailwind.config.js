@@ -12,7 +12,6 @@ module.exports = {
         letrasGrises: "#a4a3a3",
         letterGray: "#AAAAAA",
         letterGray2: "#666666"
-
       }
     },
   },
