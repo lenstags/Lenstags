@@ -1,21 +1,49 @@
 import Image from "next/image";
-import { profileMockData } from "../../__mocks__/profileMockData";
+import { useEffect, useState } from "react";
+import { client, getProfileByOwner } from "../../api";
+import { getProfilesProps } from "../../interfaces";
 
 const Header = () => {
+  const [profile, setProfile] = useState<getProfilesProps>();
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  async function fetchProfile() {
+    try {
+      const returnedProfile = await client.query(getProfileByOwner).toPromise();
+      console.log("data: ", returnedProfile.data.profiles.items[0]);
+      setProfile(returnedProfile.data.profiles.items[0]);
+    } catch (err) {
+      console.log("error fetching profile...", err);
+    }
+  }
+
+  console.log("Profile: ", profile);
+  // https://lens.infura-ipfs.io/ipfs/QmaqH1NVFi3ywCDBaoNMsnWFEXpK2L5pZDmepg8yDX1YzT
+  // https:ipfs://bafkreib5dztc6knxhzunyxaqktbhwz5vilsnlxrxnwkdoy2rupu4a3piha
+
   return (
     <div className="mb-5">
       <div className="bg-greenLengs py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between px-5 shadow rounded-t">
         <div className="flex items-center  sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0">
           <div className="relative w-24 h-24 ">
-            <Image
-              width="100%"
-              height="100%"
-              src={profileMockData.profilePic}
-              alt="avatar"
-            />
+            {profile && (
+              <Image
+                width="100%"
+                height="100%"
+                src={profile.picture?.original?.url}
+                alt="avatar"
+              />
+            )}
           </div>
           <div className="ml-2">
-            <h2 className="text-black text-sm font-semibold">{profileMockData.userName}</h2>
+            {profile && (
+              <h2 className="text-black text-sm font-semibold">
+                {profile?.handle}
+              </h2>
+            )}
+
             <p className="font-normal text-xs text-gray-600 dark:text-gray-400 cursor-pointer hover:text-gray-700">
               Edit Profile
             </p>

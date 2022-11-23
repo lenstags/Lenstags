@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Tabs from "../Tabs/Tabs";
 import Cards from "../Cards/Cards";
@@ -6,11 +6,29 @@ import HeaderProfile from "../Profile/Profile";
 import SearchTags from "../TagsSection/TagsSection";
 import { useDisconnect } from "wagmi";
 import Pagination from "../Pagination/pagination";
+import { getProfilesProps } from "../../interfaces";
+import { client, getProfileByOwner } from "../../api";
 
 export default function IndexPage() {
   const [show, setShow] = useState(false);
-  const [profile, setProfile] = useState(false);
   const { disconnect } = useDisconnect();
+  const [profile, setProfile] = useState(false);
+  const [profileData, setProfileData] = useState<getProfilesProps>();
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  async function fetchProfile() {
+    try {
+      const returnedProfile = await client.query(getProfileByOwner).toPromise();
+      console.log("data: ", returnedProfile.data.profiles.items[0]);
+      setProfileData(returnedProfile.data.profiles.items[0]);
+    } catch (err) {
+      console.log("error fetching profile...", err);
+    }
+  }
+
+  console.log("Profile: ", profile);
 
   return (
     <>
@@ -212,9 +230,11 @@ export default function IndexPage() {
                           src="/img/user.png"
                           alt="avatar"
                         />
-                        <p className="md:text-xl  text-gray-800 text-base leading-4 ml-2">
-                          CryptoNahue
-                        </p>
+                        {profile && (
+                          <p className="md:text-xl  text-gray-800 text-base leading-4 ml-2">
+                            {profileData?.handle}
+                          </p>
+                        )}
                       </div>
                       <ul className="flex">
                         <li className="cursor-pointer text-white pt-5 pb-3">
@@ -391,19 +411,23 @@ export default function IndexPage() {
                           ""
                         )}
                         <div className="relative p-0 m-0">
-                          <Image
-                            className=""
-                            width="60px"
-                            height="60px"
-                            src="/img/user.png"
-                            alt="avatar"
-                          />
+                          {profileData && (
+                            <Image
+                              className=""
+                              width="60px"
+                              height="60px"
+                              src={profileData.picture?.original?.url}
+                              alt="avatar"
+                            />
+                          )}
                           <div className="w-2 h-2 rounded-full bg-green-400 border border-white absolute inset-0 mb-0 mr-0 m-auto" />
                         </div>
                       </div>
-                      <p className="text-gray-800 text-sm mx-3 hover:text-black">
-                        CryptoNahue
-                      </p>
+                      {profileData && (
+                        <p className="text-gray-800 text-sm mx-3 hover:text-black">
+                          {profileData?.handle}
+                        </p>
+                      )}
                       <div className="cursor-pointer text-gray-600">
                         <svg
                           aria-haspopup="true"
