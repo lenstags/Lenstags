@@ -14,7 +14,7 @@ const MainLayout = ({ children, header }: MainLayoutProps) =>  (
   <>
   {
     header ? (
-      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+      <Box bg={useColorModeValue('#DEF702', '#DEF702')} px={4}>
         { header }
       </Box>
     ) : undefined

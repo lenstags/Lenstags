@@ -13,30 +13,31 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { useDisconnect } from "wagmi";
-import { HamburgerIcon, CloseIcon, AddIcon } from '@chakra-ui/icons';
-
+import {  AddIcon } from '@chakra-ui/icons';
+import Image from 'next/image';
 
 const NavBar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  
   const { disconnect } = useDisconnect();
 
   return (
-    <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-      <IconButton
-        size={'md'}
-        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-        aria-label={'Open Menu'}
-        display={{ md: 'none' }}
-        onClick={isOpen ? onClose : onOpen}
-      />
+    <Flex h={16} alignItems={'center'} justifyContent={'space-between'} >
+      
       <HStack spacing={8} alignItems={'center'}>
-        <Box>Lenstags</Box>
+        <Box> <Image
+                src="/img/logo-extended.svg"
+                alt="Lenstags Logo"
+                width={100}
+                height={60}
+              /></Box>
       </HStack>
       <Flex alignItems={'center'}>
         <Button
           variant={'solid'}
-          colorScheme={'teal'}
+          colorScheme={'BlackAlpha'}
           size={'sm'}
+          border={'2px'}
+          color={'black'}
           mr={4}
           leftIcon={<AddIcon />}>
           Post
@@ -58,7 +59,7 @@ const NavBar = () => {
           <MenuList>
             <MenuItem>Edit Profile</MenuItem>
             <MenuDivider />
-            <MenuItem onClick={() => disconnect()}>Disconect</MenuItem>
+            <MenuItem onClick={() => disconnect()}>Disconnect</MenuItem>
           </MenuList>
         </Menu>
       </Flex>
