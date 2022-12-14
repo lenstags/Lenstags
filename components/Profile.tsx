@@ -1,21 +1,35 @@
-import Image from "next/image";
-import { profileMockData } from "../../__mocks__/profileMockData";
+/* eslint-disable @next/next/no-img-element */
 
-const Header = () => {
+import { profileMockData } from "../__mocks__/profileMockData";
+
+import React, { useContext, useEffect, useState } from "react";
+
+import { ProfileContext } from "components/LensAuthenticationProvider";
+
+export const Profile = () => {
+  const lensProfile = useContext(ProfileContext);
+  console.log(lensProfile);
+
   return (
     <div className="mb-5">
       <div className="bg-greenLengs py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between px-5 shadow rounded-t">
         <div className="flex items-center  sm:mb-0 md:mb-0 lg:mb-0 xl:mb-0">
           <div className="relative w-24 h-24 ">
-            <Image
+            <img
+              className=" rounded-full"
               width="100%"
               height="100%"
-              src={profileMockData.profilePic}
+              src={lensProfile?.pictureUrl || profileMockData.profilePic}
               alt="avatar"
             />
           </div>
           <div className="ml-2">
-            <h2 className="text-black text-sm font-semibold">{profileMockData.userName}</h2>
+            <h2 className="text-black text-2xl font-semibold">
+              {lensProfile?.name}
+            </h2>
+            <span className=" text-slate-400 font-mono ">
+              @{lensProfile?.handle}
+            </span>
             <p className="font-normal text-xs text-gray-600 dark:text-gray-400 cursor-pointer hover:text-gray-700">
               Edit Profile
             </p>
@@ -81,4 +95,3 @@ const Header = () => {
     </div>
   );
 };
-export default Header;
